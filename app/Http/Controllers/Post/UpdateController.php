@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\UpdateRequest;
 use App\Models\Post;
 
-class UpdateController extends Controller
+class UpdateController extends BaseController
 {
 
     public function __invoke(UpdateRequest $request, Post $post)
@@ -14,7 +14,10 @@ class UpdateController extends Controller
 
 
         $data = $request->validated();
-        $post->update($data);
+
+        $this->service->update($post,$data);
+
+
         return redirect()->route('family.show', $post->id);
     }
 
