@@ -13,27 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::group(['namespace' => 'Post'], function (){
+    Route::get('/', 'IndexController')->name('family.index');
+    Route::get('/family', 'IndexController')->name('family.index');
+    Route::get('/family/create', 'CreateController')->name('family.create');
+    Route::post('/family', 'StoreController')->name('family.store');
+    Route::get('/family/{post}', 'ShowController')->name('family.show');
+    Route::get('/family/{post}/edit', 'EditController')->name('family.edit');
+    Route::patch('/family/{post}', 'UpdateController')->name('family.update');
+    Route::delete('/family/{post}', 'DestroyController')->name('family.delete');
 });
 
 
-Route::get('/my_family2', function () {
-    return 'Сімя Кащій2';
-});
-Route::get('/family', 'FamilyController@Index')->name('family.index');
-Route::get('/family/create', 'FamilyController@create')->name('family.create');
-
-Route::post('/family', 'FamilyController@store')->name('family.store');
-Route::get('/family/{post}', 'FamilyController@show')->name('family.show');
-Route::get('/family/{post}/edit', 'FamilyController@edit')->name('family.edit');
-Route::patch('/family/{post}', 'FamilyController@update')->name('family.update');
-Route::delete('/family/{post}', 'FamilyController@destroy')->name('family.delete');
-
-Route::get('/family/update', 'FamilyController@update');
-Route::get('/family/delete', 'FamilyController@delete');
-Route::get('/family/first_or_create', 'FamilyController@firstOrCreate');
-Route::get('/family/update_or_create', 'FamilyController@updateOrCreate');
 
 
 Route::get('/main', 'MainController@Index')->name('main.index');
