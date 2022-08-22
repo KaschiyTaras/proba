@@ -32,4 +32,4 @@ Route::group(['namespace' => 'Post'], function (){
 Route::get('/main', 'MainController@Index')->name('main.index');
 Route::get('/contacts', 'ContactsController@Index')->name('contacts.index');
 Route::get('/about', 'AboutController@Index')->name('about.index');
-Route::get('/about', 'AboutController@Index2')->name('about.index');
+
